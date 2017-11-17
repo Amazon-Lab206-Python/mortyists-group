@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PhoneTools</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="{% static 'phonetool/css/style.css'%}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1> </h1>
+            {% if messages %} {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %} {% endif %}
+            <h2>Registration</h2>
+            <form action="/register" method="POST">
+                {% csrf_token %} Full Name:
+                <input type="text" name="name"> Alias:
+                <input type="text" name="alias"> Email:
+                <input type="email" name="email"> Location:
+                <select class="browser-default" name="location">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="SEA69">SEA69</option>
+                    <option value="GFK2">GFK2</option>
+                    <option value="AZA10">AZA10</option>
+                    <option value="PHX11">PHX11</option>
+                </select>
+        </div>
+        Password:
+        <input type="password" name="password"> Confirm Password:
+        <input type="password" name="confirm_pass">
+        <input class="waves-effect waves-light btn-large" type="submit" value='Register'>
+        </form>
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            {% csrf_token %} Email:
+            <input type="email" name="email"> Password:
+            <input type="password" name="password">
+            <input class="waves-effect waves-light btn-large" type="submit" value='Login'>
+        </form>
+    </div>
+</body>
+
+</html>

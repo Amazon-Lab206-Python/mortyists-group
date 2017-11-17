@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="stylesheet" type="text/css" href="{% static 'phonetool/css/style.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Info</title>
+</head>
+
+<body>
+    <div class="container">
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <div class="row">
+            <div class="top">
+                <div class="col s4">
+                    <img src="{% static 'phonetool/images/picklerick.png' %}" alt="profile_pic">
+                    <a class="waves-effect waves-light btn" href="/phonetool/{{user.id}}/edit">Edit My Info</a>
+                </div>
+
+                <div class="col s6">
+                    <h4> {{user.name}} </h4>
+                    <h6> [YOUR MORTY RANK] </h6>
+                    <p> {{user.email}} </p>
+                    <p>
+                        <span> MESSAGE: </span>
+                        <a href="/phonetool/{{user.id}}/edit">Edit</a> your info to add a message! </p>
+                    <p>
+                        <span> LOCATION: </span>
+                        {% if user.location == 'AZA10' %} 
+                        AZA10 - Tempe,AZ 
+                        {% elif user.location == 'PHX11' %} 
+                        PHX11 - Tempe, AZ 
+                        {% elif user.location == 'SEA69' %} 
+                        GFK2 - Grand Forks, ND 
+                        {% elif user.location == 'GFK2' %} 
+                        SEA69 - Seattle, WA
+                        {% endif %}
+                    </p>
+                    <p>
+                        <span> LOGIN/ALIAS: </span> {{user.alias}}</p>
+                </div>
+            </div>
+            <div class="col s8">
+                <div class="google_map">
+                    <!-- INSERT GOOGLE MAP INFO HERE -->
+                    {% if user.location == 'AZA10' %}
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Amazon+AZA10,Tempe,AZ&zoom=17&size=600x300&markers=color:red%7Clabel:S%7C33.3383880,-111.897002&maptype=roadmap&key=AIzaSyDCWwLbgxt1WqGGT69AMqyHhyVHlpYWgi4"> 
+                    {% elif user.location == 'PHX11' %}
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Amazon+PHX11,Tempe,az&zoom=16&size=600x300&markers=color:red%7Clabel:S%7C33.4301436,-111.9395526&maptype=roadmap&key=AIzaSyDCWwLbgxt1WqGGT69AMqyHhyVHlpYWgi4"> 
+                    {% elif user.location == 'SEA69' %}
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Amazon+Galaxy+(SEA69),Seattle,WA&zoom=17&size=600x300&markers=color:red%7Clabel:S%7C47.6252031,-122.3673000&maptype=roadmap&key=AIzaSyDCWwLbgxt1WqGGT69AMqyHhyVHlpYWgi4"> 
+                    {% elif user.location == 'GFK2' %}
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Amazon+GFK2,Grand+Forks,ND&zoom=16&size=600x300&markers=color:red%7Clabel:S%7C47.9081152,-97.1011957&maptype=roadmap&key=AIzaSyDCWwLbgxt1WqGGT69AMqyHhyVHlpYWgi4"> 
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="highlight">
+                    <div class="org">
+                        <table id="chart">
+                            <thead> ORG CHART </thead>
+                            <tbody>
+                                <tr>
+                                    <td> {{user.name}} {{user.alias}} [morty position] </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="awards">
+                    <h3>AWARDS</h3>
+                    <div id="request_morty">
+                        <p>[request morty]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

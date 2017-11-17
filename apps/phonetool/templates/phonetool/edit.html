@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <link rel="stylesheet" type="text/css" href="{% static 'phonetool/css/style.css'%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Your Info</title>
+</head>
+
+<body>
+    <h1> Hey {{user.name}} </h1>
+    <p>change stuff here </p>
+    <form action="/register" method="POST">
+        {% csrf_token %} Full Name:
+        <input type="text" name="name"> Alias:
+        <input type="text" name="alias"> Email:
+        <input type="email" name="email"> Location:
+        <select class="browser-default" name="location">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="SEA69">SEA69</option>
+            <option value="GFK2">GFK2</option>
+            <option value="AZA10">AZA10</option>
+            <option value="PHX11">PHX11</option>
+        </select>
+        </div>
+        Password:
+        <input type="password" name="password"> Confirm Password:
+        <input type="password" name="confirm_pass">
+        <input class="waves-effect waves-light btn-large" type="submit" value='Submit Changes'>
+    </form>
+</body>
+
+</html>
