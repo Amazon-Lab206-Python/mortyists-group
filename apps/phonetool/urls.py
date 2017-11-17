@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^logout$', views.logout),
     url(r'^phonetool/(?P<user_id>\d+)$', views.phonetool),
     url(r'^phonetool/(?P<user_id>\d+)/edit$', views.edit),    
-    url(r'^phonetool/(?P<user_id>\d+)/edit/process$', views.process),        
+    url(r'^phonetool/(?P<user_id>\d+)/edit/process$', views.process),
+    url(r'^phonetool/(?P<user_id>\d+)/roll$', views.roll),            
 ]

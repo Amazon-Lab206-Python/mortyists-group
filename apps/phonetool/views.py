@@ -56,3 +56,5 @@ def process(request, user_id):
         request.session['user_id'] = User.objects.get(email=request.POST['email']).id
         return redirect("/phonetool/{}".format(request.session['user_id']))
     
+def roll(request, current_morty_count, user_id):
+    total_morty_count = User.objects.get(id=user_id).

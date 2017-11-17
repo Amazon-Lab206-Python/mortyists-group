@@ -76,7 +76,7 @@ class UserManager(models.Manager):
             errors.append("Passwords do not match")
         if len(User.objects.filter(email=postData['email'])) > 0 and len(User.objects.filter(email=postData['email'])) < 2:
             errors.append(
-                "Please make sure your email is valid, broh.")
+                "Please make sure your email is valid.")
         if len(errors) > 0:
             return (False, errors)
         else:
@@ -105,6 +105,26 @@ class User(models.Model):
 #     created_at = models.DateTimeField(auto_now_add = True)
 #     updated_at = models.DateTimeField(auto_now = True)
 
+class AwardManager(models.Manager):
+    def process(request):
+        morty_roll = random.randrange(0,101)
+        current_morty_count = 0
+        if morty_roll == 50:
+            Award. = -50
+        elif morty_roll == 1:
+            current_morty_count = *2
+        elif morty_roll == 2:
+            current_morty_count = *1.5
+        elif morty_roll == 69:
+            current_morty_count = 0
+        else:
+            current_morty_count += morty_roll value
+        return current_morty_count
 
 class Award(models.Model):
-    mortys = models.IntegerField()
+    normie_morty = models.IntegerField()
+    evil_morty = models.IntegerField()
+    angry_summer = models.IntegerField()
+    pickle_rick = models.IntegerField()
+    mr_poopybutthole = models.IntegerField()
+    objects = AwardManager()
